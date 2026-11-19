@@ -1,36 +1,60 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.custom-dropdown-menu.offcanvas-top {
-    left: auto !important;
-    right: 0 !important;
-    width: 250px !important;
-    height: auto !important;
-    background-color: #f0f0f0;
+:root {
+    --acer-green: #83b81a;
+    --acer-green-dark: #6c9c14;
 }
 
-/* Делаем шрифт ссылок тонким на ПК, как на макете */
-.navbar-nav .nav-link {
-    font-weight: 400 !important;
-    font-size: 24px;
-    color: #000000 !important;
-    transition: color 0.2s ease;
+/* Слоган біля логотипа */
+.brand-slogan {
+    font-weight: 800;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.1;
+    color: #000000;
+    text-transform: none;
 }
 
-/* При наведении ссылки плавно становятся зелеными */
-.navbar-nav .nav-link:hover {
-    color: #4caf50 !important; 
-}
-
-/* Межстрочный интервал для слогана */
 .line-height-tight {
     line-height: 1.2;
 }
 
-/* Наше кастомное меню сверху-справа для мобилок */
+/* Навігація */
+.navbar-nav .nav-link {
+    position: relative;
+    font-weight: 400 !important;
+    font-size: 24px;
+    color: #000000 !important;
+    padding-bottom: 6px;
+    transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--acer-green);
+    transition: width 0.25s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--acer-green) !important;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 100%;
+}
+
+/* Мобільне меню */
 .custom-dropdown-menu.offcanvas-top {
     left: auto !important;
     right: 0 !important;
@@ -38,5 +62,246 @@
     height: auto !important;
     border-bottom-left-radius: 8px;
     background-color: #f0f0f0;
+}
+
+/* Банер */
+.hero-section {
+    min-height: 450px;
+    background: url("images/Banner.png") center / cover no-repeat;
+}
+
+.hero-buttons {
+    align-items: center;
+}
+
+.btn-hero-green,
+.btn-hero-white {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.btn-hero-green {
+    background-color: var(--acer-green);
+    color: #ffffff;
+    border: 2px solid var(--acer-green);
+}
+
+.btn-hero-green:hover {
+    background-color: var(--acer-green);
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.btn-hero-white {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #ffffff;
+}
+
+.btn-hero-white:hover {
+    background-color: var(--acer-green);
+    border-color: var(--acer-green);
+    color: #ffffff;
+    transform: scale(1.12);
+}
+
+/* Зелені кнопки форм та дій */
+.btn-gradient,
+a.btn-gradient,
+button.btn-gradient {
+    background-color: var(--acer-green) !important;
+    border-color: var(--acer-green) !important;
+    color: #ffffff !important;
+}
+
+.btn-gradient:hover,
+a.btn-gradient:hover,
+button.btn-gradient:hover {
+    background-color: var(--acer-green-dark) !important;
+    border-color: var(--acer-green-dark) !important;
+    color: #ffffff !important;
+}
+
+/* Каталог і картки товарів */
+#products-container > * {
+    min-width: 0;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    padding: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    background-color: #ffffff;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.product-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+}
+
+.product-card img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 220px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product-card h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.product-card .desc {
+    color: #666666;
+    flex-grow: 1;
+    margin-bottom: 16px;
+}
+
+.card-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.buy_btn {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--acer-green);
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.buy_btn:hover {
+    background-color: var(--acer-green-dark);
+}
+
+.about-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.about-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: var(--acer-green);
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+.navbar-toggler {
+    border-color: var(--acer-green) !important;
+    padding: 6px 10px !important;
+    border-radius: 8px !important;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.navbar-toggler:hover {
+    background-color: rgba(131, 184, 26, 0.12);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(131, 184, 26, 0.3) !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2383b81a' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.custom-dropdown-menu.offcanvas-top {
+    left: auto !important;
+    right: 0 !important;
+    width: min(260px, 80vw) !important;
+    height: auto !important;
+    border-bottom-left-radius: 12px;
+    background-color: #f4f5f6;
+    box-shadow: -4px 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.custom-dropdown-menu a {
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.custom-dropdown-menu a:hover {
+    color: var(--acer-green) !important;
+    transform: translateX(-3px);
+}
+
+.cart-toast {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1080;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background-color: #1f2421;
+    color: #ffffff;
+    border-left: 4px solid var(--acer-green, #83b81a);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.cart-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-section {
+    min-height: 450px;
+    background: url("images/Banner.png") center center / cover no-repeat;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 320px;
+        background-position: 70% center; /* зсуває кадр праворуч/вліво, якщо щось важливе збоку */
+    }
 }
 
