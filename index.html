@@ -27,7 +27,7 @@
                 <ul class="navbar-nav gap-3 gap-xl-5 flex-row">
                     <li class="nav-item"><a class="nav-link text-dark px-0" href="index.html">Головна</a></li>
                     <li class="nav-item"><a class="nav-link text-dark px-0" href="cart.html">Кошик</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark px-0" href="index.html#catalog">Товари</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark px-0" href="products.html">Товари</a></li>
                     <li class="nav-item"><a class="nav-link text-dark px-0" href="index.html#support">Підтримка</a></li>
                 </ul>
             </div>
@@ -38,23 +38,19 @@
                 </div>
                 <div class="offcanvas-body pb-4">
                     <div class="d-flex flex-column gap-3 text-center align-items-center">
-                            <a class="text-decoration-none text-dark fs-5 fw-medium py-1" href="index.html">Головна</a>
-                            <a class="text-decoration-none text-dark fs-5 fw-medium py-1" href="cart.html">Кошик</a>
-                            <a class="text-decoration-none text-dark fs-5 fw-medium py-1" href="#catalog">Товари</a>
-                            <a class="text-decoration-none text-dark fs-5 fw-medium py-1" href="#support">Підтримка</a>
+                        <a class="text-decoration-none text-dark fs-5 fw-medium py-1" href="index.html">Головна</a>
+                        <a class="text-decoration-none text-dark fs-5 fw-medium py-1" href="cart.html">Кошик</a>
+                        <a class="text-decoration-none text-dark fs-5 fw-medium py-1" href="products.html">Товари</a>
+                        <a class="text-decoration-none text-dark fs-5 fw-medium py-1" href="#support">Підтримка</a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
 
-
-
     <header class="hero-section d-flex align-items-center position-relative overflow-hidden text-white">
         <div class="container position-relative z-1 py-5">
             <div class="row align-items-center gy-5">
-                
-
                 <div class="col-lg-6 text-center text-lg-start">
                     <h1 class="display-4 fw-bold text-uppercase mb-3 tracking-wide">Грай без обмежень!</h1>
                     <p class="lead mb-4 opacity-75">Відчуй справжню силу ігрових технологій Acer.</p>
@@ -74,20 +70,6 @@
 
     <main class="container my-5" id="catalog">
         <h2 class="mb-4">Каталог</h2>
-
-        <div class="row g-3 mb-4">
-            <div class="col-md-8">
-                <input type="text" id="search-input" class="form-control" placeholder="Пошук за назвою...">
-            </div>
-            <div class="col-md-4">
-                <select id="sort-select" class="form-select">
-                    <option value="default">Без сортування</option>
-                    <option value="price-asc">Спочатку дешевші</option>
-                    <option value="price-desc">Спочатку дорожчі</option>
-                </select>
-            </div>
-        </div>
-
         <section id="products-container" class="row g-4"></section>
     </main>
 
@@ -210,16 +192,9 @@
         </div>
     </footer>
 
-    <main>
-        <section class="products-container">
-
-        </section>
-    </main>
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="app.js"></script>
 
     <div id="cart-toast" class="cart-toast" role="status" aria-live="polite"></div>
-    
 </body>
 </html>

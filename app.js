@@ -1,8 +1,7 @@
 import { Product } from "./product.js"
 import { Cart } from "./cart.js"
 
-document.addEventListener('DOMContentLoaded', () => {
-
+document.addEventListener("DOMContentLoaded", () => {
     const products = [
         new Product(1, "images/acer_nitro_5.webp", "Acer Nitro 5", "Ігровий ноутбук, 15.6\", RTX 4050", 42000),
         new Product(2, "images/acer_predator_helios.jpg", "Acer Predator Helios", "Ігровий ноутбук, 16\", RTX 4070", 78000),
@@ -14,8 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const cart = new Cart()
     const productsContainer = document.getElementById("products-container")
-    const searchInput = document.getElementById("search-input")
-    const sortSelect = document.getElementById("sort-select")
 
     let toastTimeout
 
@@ -33,45 +30,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderProducts() {
-        const query = searchInput.value.trim().toLowerCase()
-
-        let list = products.filter(p => p.title.toLowerCase().includes(query))
-
-        switch (sortSelect.value) {
-            case "price-asc":
-                list.sort((a, b) => a.price - b.price)
-                break
-            case "price-desc":
-                list.sort((a, b) => b.price - a.price)
-                break
-        }
-
-        if (list.length === 0) {
-            productsContainer.innerHTML = `<p class="text-center text-muted">Нічого не знайдено</p>`
-            return
-        }
-
-        productsContainer.innerHTML = list.map(p => p.toHtml()).join('')
+        if (!productsContainer) return
+        productsContainer.innerHTML = products.map(p => p.toHtml()).join("")
     }
 
     renderProducts()
-    cart.render()
 
-    searchInput.addEventListener('input', renderProducts)
-    sortSelect.addEventListener('change', renderProducts)
+    if (productsContainer) {
+        productsContainer.addEventListener("click", (event) => {
+            const btn = event.target.closest(".buy_btn")
+            if (!btn) return
 
-    productsContainer.addEventListener('click', (event) => {
-        const btn = event.target.closest('.buy_btn')
-        if (!btn) return
+            const productId = parseInt(btn.getAttribute("data-id"), 10)
+            const productToAdd = products.find(p => p.id === productId)
 
-        const productId = parseInt(btn.getAttribute("data-id"), 10)
-        const productToAdd = products.find(p => p.id === productId)
-
-        if (productToAdd) {
-            cart.add(productToAdd)
-            showCartToast(productToAdd.title)
-        }
-    })
+            if (productToAdd) {
+                cart.add(productToAdd)
+                showCartToast(productToAdd.title)
+            }
+        })
+    }
 
     const mobileMenuEl = document.getElementById("mobileMenu")
     if (mobileMenuEl) {
